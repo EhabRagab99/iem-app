@@ -1,5 +1,6 @@
 import 'package:iem_app/helpers/app_size_config.dart';
 import 'package:iem_app/helpers/general_states/focus_state.dart';
+import 'package:iem_app/helpers/popup_helpers/toast_helpers.dart';
 import 'package:iem_app/helpers/routes_handler/material_navigation.dart';
 import 'package:iem_app/helpers/thems_and_decorations/app_color_config.dart';
 import 'package:iem_app/pages/bar_home/controller/api/api_get_workforce_assignments.dart';
@@ -80,505 +81,513 @@ class _BarHomeScreenState extends State<BarHomeScreen> {
                     keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
                     child: Padding(
                       padding: EdgeInsets.symmetric(horizontal: SizeConfig.height * 0.017,),
-                      child: Column(
-                        children: [
-                          0.05.heightBox,
-                          MainAppTitleWidget(
-                            title: 'Enter the following inputs please',
-                            titleTextStyle: Theme.of(context).textTheme.headlineMedium!.copyWith(
-                              color: ColorConfig().blackColor(1),
+                      child: Form(
+                        key: homeProvider.formKey,
+                        child: Column(
+                          children: [
+                            0.05.heightBox,
+                            MainAppTitleWidget(
+                              title: 'Enter the following inputs please',
+                              titleTextStyle: Theme.of(context).textTheme.headlineMedium!.copyWith(
+                                color: ColorConfig().blackColor(1),
+                              ),
                             ),
-                          ),
-                          0.01.heightBox,
-                          CustomTextFieldWidget(
-                            title: 'Total actual load (MW)',
-                            controller: homeProvider.totalActualLoadController,
-                            hintText: 'Total actual load (MW)',
-                            needsTranslation: false,
-                            // textCapitalization: TextCapitalization.words,
-                            allowArabic: true,
-                            textInputAction: TextInputAction.next,
-                            keyboardType: TextInputType.number,
-                            allowNumber: true,
-                            validator: (val){
-                              if(val.isNotEmpty) {
-                                return null;
-                              }else{
-                                return 'fieldRe'.tr;
-                              }
-                            },
+                            0.01.heightBox,
+                            CustomTextFieldWidget(
+                              title: 'Total actual load (MW)',
+                              controller: homeProvider.totalActualLoadController,
+                              hintText: 'Total actual load (MW)',
+                              needsTranslation: false,
+                              // textCapitalization: TextCapitalization.words,
+                              allowArabic: true,
+                              textInputAction: TextInputAction.next,
+                              keyboardType: TextInputType.number,
+                              allowNumber: true,
+                              validator: (val){
+                                if(val.isNotEmpty) {
+                                  return null;
+                                }else{
+                                  return 'fieldRe'.tr;
+                                }
+                              },
 
-                          ),
-                          0.021.heightBox,
-                          CustomTextFieldWidget(
-                            title: 'Temperature',
-                            controller: homeProvider.temperatureController,
-                            hintText: 'Temperature',
-                            needsTranslation: false,
-                            allowArabic: true,
-                            textInputAction: TextInputAction.next,
-                            keyboardType: TextInputType.number,
-                            allowNumber: true,
-                            validator: (val){
-                              if(val.isNotEmpty) {
-                                return null;
-                              }else{
-                                return 'fieldRe'.tr;
-                              }
-                            },
-
-                          ),
-                          0.021.heightBox,
-
-                          CustomTextFieldWidget(
-                            title: 'Solar power (MW)',
-                            controller: homeProvider.solarPowerController,
-                            hintText: 'Solar power (MW)',
-                            needsTranslation: false,
-                            allowArabic: true,
-                            textInputAction: TextInputAction.next,
-                            keyboardType: TextInputType.number,
-                            allowNumber: true,
-                            validator: (val){
-                              if(val.isNotEmpty) {
-                                return null;
-                              }else{
-                                return 'fieldRe'.tr;
-                              }
-                            },
-
-                          ),
-                          0.021.heightBox,
-
-                          CustomTextFieldWidget(
-                            title: 'Biomass (MW)',
-                            controller: homeProvider.biomassController,
-                            hintText: 'Biomass (MW)',
-                            needsTranslation: false,
-                            allowArabic: true,
-                            textInputAction: TextInputAction.next,
-                            keyboardType: TextInputType.number,
-                            allowNumber: true,
-                            validator: (val){
-                              if(val.isNotEmpty) {
-                                return null;
-                              }else{
-                                return 'fieldRe'.tr;
-                              }
-                            },
-
-                          ),
-                          0.021.heightBox,
-
-                          CustomTextFieldWidget(
-                            title: 'Fossil oil (MW)',
-                            controller: homeProvider.fossilOilController,
-                            hintText: 'Fossil oil (MW)',
-                            needsTranslation: false,
-                            allowArabic: true,
-                            textInputAction: TextInputAction.next,
-                            keyboardType: TextInputType.number,
-                            allowNumber: true,
-                            validator: (val){
-                              if(val.isNotEmpty) {
-                                return null;
-                              }else{
-                                return 'fieldRe'.tr;
-                              }
-                            },
-
-                          ),
-                          0.021.heightBox,
-
-                          CustomTextFieldWidget(
-                            title: 'Fossil gas (MW)',
-                            controller: homeProvider.fossilGasController,
-                            hintText: 'Fossil gas (MW)',
-                            needsTranslation: false,
-                            allowArabic: true,
-                            textInputAction: TextInputAction.next,
-                            keyboardType: TextInputType.number,
-                            allowNumber: true,
-                            validator: (val){
-                              if(val.isNotEmpty) {
-                                return null;
-                              }else{
-                                return 'fieldRe'.tr;
-                              }
-                            },
-
-                          ),
-                          0.021.heightBox,
-
-                          CustomTextFieldWidget(
-                            title: 'Brown coal lignite (MW)',
-                            controller: homeProvider.brownCoalLigniteController,
-                            hintText: 'Brown coal lignite (MW)',
-                            needsTranslation: false,
-                            allowArabic: true,
-                            textInputAction: TextInputAction.next,
-                            keyboardType: TextInputType.number,
-                            allowNumber: true,
-                            validator: (val){
-                              if(val.isNotEmpty) {
-                                return null;
-                              }else{
-                                return 'fieldRe'.tr;
-                              }
-                            },
-
-                          ),
-                          0.021.heightBox,
-
-                          CustomTextFieldWidget(
-                            title: 'Hard coal (MW)',
-                            controller: homeProvider.hardCoalController,
-                            hintText: 'Hard coal (MW)',
-                            needsTranslation: false,
-                            allowArabic: true,
-                            textInputAction: TextInputAction.next,
-                            keyboardType: TextInputType.number,
-                            allowNumber: true,
-                            validator: (val){
-                              if(val.isNotEmpty) {
-                                return null;
-                              }else{
-                                return 'fieldRe'.tr;
-                              }
-                            },
-
-                          ),
-                          0.021.heightBox,
-
-                          CustomTextFieldWidget(
-                            title: 'Hydro run of river poundage(MW)',
-                            controller: homeProvider.hydroRunOfRiverPoundageController,
-                            hintText: 'Hydro run of river poundage(MW)',
-                            needsTranslation: false,
-                            allowArabic: true,
-                            textInputAction: TextInputAction.next,
-                            keyboardType: TextInputType.number,
-                            allowNumber: true,
-                            validator: (val){
-                              if(val.isNotEmpty) {
-                                return null;
-                              }else{
-                                return 'fieldRe'.tr;
-                              }
-                            },
-
-                          ),
-                          0.021.heightBox,
-
-                          CustomTextFieldWidget(
-                            title: 'Hydro water reservoir (MW)',
-                            controller: homeProvider.hydroWaterReservoirController,
-                            hintText: 'Hydro water reservoir (MW)',
-                            needsTranslation: false,
-                            allowArabic: true,
-                            textInputAction: TextInputAction.next,
-                            keyboardType: TextInputType.number,
-                            allowNumber: true,
-                            validator: (val){
-                              if(val.isNotEmpty) {
-                                return null;
-                              }else{
-                                return 'fieldRe'.tr;
-                              }
-                            },
-
-                          ),
-                          0.021.heightBox,
-
-                          CustomTextFieldWidget(
-                            title: 'Nuclear power (MW)',
-                            controller: homeProvider.nuclearPowerController,
-                            hintText: 'Nuclear power (MW)',
-                            needsTranslation: false,
-                            allowArabic: true,
-                            textInputAction: TextInputAction.next,
-                            keyboardType: TextInputType.number,
-                            allowNumber: true,
-                            validator: (val){
-                              if(val.isNotEmpty) {
-                                return null;
-                              }else{
-                                return 'fieldRe'.tr;
-                              }
-                            },
-
-                          ),
-                          0.021.heightBox,
-
-                          CustomTextFieldWidget(
-                            title: 'Waste (MW)',
-                            controller: homeProvider.wasteController,
-                            hintText: 'Waste (MW)',
-                            needsTranslation: false,
-                            allowArabic: true,
-                            textInputAction: TextInputAction.next,
-                            keyboardType: TextInputType.number,
-                            allowNumber: true,
-                            validator: (val){
-                              if(val.isNotEmpty) {
-                                return null;
-                              }else{
-                                return 'fieldRe'.tr;
-                              }
-                            },
-
-                          ),
-                          0.021.heightBox,
-
-                          CustomTextFieldWidget(
-                            title: 'Wind onshore (MW)',
-                            controller: homeProvider.windOnshoreController,
-                            hintText: 'Wind onshore (MW)',
-                            needsTranslation: false,
-                            allowArabic: true,
-                            textInputAction: TextInputAction.next,
-                            keyboardType: TextInputType.number,
-                            allowNumber: true,
-                            validator: (val){
-                              if(val.isNotEmpty) {
-                                return null;
-                              }else{
-                                return 'fieldRe'.tr;
-                              }
-                            },
-
-                          ),
-                          0.021.heightBox,
-
-                          CustomTextFieldWidget(
-                            title: 'Wind speed',
-                            controller: homeProvider.windSpeedController,
-                            hintText: 'Wind speed',
-                            needsTranslation: false,
-                            allowArabic: true,
-                            textInputAction: TextInputAction.next,
-                            keyboardType: TextInputType.number,
-                            allowNumber: true,
-                            validator: (val){
-                              if(val.isNotEmpty) {
-                                return null;
-                              }else{
-                                return 'fieldRe'.tr;
-                              }
-                            },
-
-                          ),
-                          0.021.heightBox,
-
-                          CustomTextFieldWidget(
-                            title: 'Pressure',
-                            controller: homeProvider.pressureController,
-                            hintText: 'Pressure',
-                            needsTranslation: false,
-                            allowArabic: true,
-                            textInputAction: TextInputAction.next,
-                            keyboardType: TextInputType.number,
-                            allowNumber: true,
-                            validator: (val){
-                              if(val.isNotEmpty) {
-                                return null;
-                              }else{
-                                return 'fieldRe'.tr;
-                              }
-                            },
-
-                          ),
-                          0.021.heightBox,
-
-
-                          CustomTextFieldWidget(
-                            title: 'Humidity',
-                            controller: homeProvider.humidityController,
-                            hintText: 'Humidity',
-                            needsTranslation: false,
-                            allowArabic: true,
-                            textInputAction: TextInputAction.next,
-                            keyboardType: TextInputType.number,
-                            allowNumber: true,
-                            validator: (val){
-                              if(val.isNotEmpty) {
-                                return null;
-                              }else{
-                                return 'fieldRe'.tr;
-                              }
-                            },
-
-                          ),
-                          0.021.heightBox,
-
-                          CustomTextFieldWidget(
-                            title: 'Other renewable (MW)',
-                            controller: homeProvider.otherRenewableController,
-                            hintText: 'Other renewable (MW)',
-                            needsTranslation: false,
-                            allowArabic: true,
-                            textInputAction: TextInputAction.next,
-                            keyboardType: TextInputType.number,
-                            allowNumber: true,
-                            validator: (val){
-                              if(val.isNotEmpty) {
-                                return null;
-                              }else{
-                                return 'fieldRe'.tr;
-                              }
-                            },
-
-                          ),
-                          0.021.heightBox,
-
-                          CustomTextFieldWidget(
-                            title: 'Rain_1h',
-                            controller: homeProvider.rain_1hController,
-                            hintText: 'Rain_1h',
-                            needsTranslation: false,
-                            allowArabic: true,
-                            textInputAction: TextInputAction.next,
-                            keyboardType: TextInputType.number,
-                            allowNumber: true,
-                            validator: (val){
-                              if(val.isNotEmpty) {
-                                return null;
-                              }else{
-                                return 'fieldRe'.tr;
-                              }
-                            },
-
-                          ),
-                          0.021.heightBox,
-
-
-                          CustomTextFieldWidget(
-                            title: 'hour (0-23)',
-                            controller: homeProvider.hourController,
-                            hintText: 'hour (0-23)',
-                            needsTranslation: false,
-                            allowArabic: true,
-                            textInputAction: TextInputAction.next,
-                            keyboardType: TextInputType.number,
-                            allowNumber: true,
-                            validator: (val){
-                              if(val.isNotEmpty) {
-                                return null;
-                              }else{
-                                return 'fieldRe'.tr;
-                              }
-                            },
-
-                          ),
-                          0.021.heightBox,
-
-
-                          CustomTextFieldWidget(
-                            title: 'Day of week\n(Saturday =1 ,...Friday = 7)',
-                            controller: homeProvider.dayOfWeekController,
-                            hintText: 'Day of week',
-                            needsTranslation: false,
-                            allowArabic: true,
-                            textInputAction: TextInputAction.next,
-                            keyboardType: TextInputType.number,
-                            allowNumber: true,
-                            validator: (val){
-                              if(val.isNotEmpty) {
-                                return null;
-                              }else{
-                                return 'fieldRe'.tr;
-                              }
-                            },
-
-                          ),
-                          0.021.heightBox,
-
-
-                          CustomTextFieldWidget(
-                            title: 'Day (1-31)',
-                            controller: homeProvider.dayController,
-                            hintText: 'Day (1-31)',
-                            needsTranslation: false,
-                            allowArabic: true,
-                            textInputAction: TextInputAction.next,
-                            keyboardType: TextInputType.number,
-                            allowNumber: true,
-                            validator: (val){
-                              if(val.isNotEmpty) {
-                                return null;
-                              }else{
-                                return 'fieldRe'.tr;
-                              }
-                            },
-
-                          ),
-                          0.021.heightBox,
-
-
-                          CustomTextFieldWidget(
-                            title: 'Month (1-12)',
-                            controller: homeProvider.monthController,
-                            hintText: 'Month (1-12)',
-                            needsTranslation: false,
-                            allowArabic: true,
-                            textInputAction: TextInputAction.next,
-                            keyboardType: TextInputType.number,
-                            allowNumber: true,
-                            validator: (val){
-                              if(val.isNotEmpty) {
-                                return null;
-                              }else{
-                                return 'fieldRe'.tr;
-                              }
-                            },
-
-                          ),
-                          0.021.heightBox,
-
-                          CustomTextFieldWidget(
-                            title: 'Other (MW)',
-                            controller: homeProvider.otherController,
-                            hintText: 'Other (MW)',
-                            needsTranslation: false,
-                            allowArabic: true,
-                            textInputAction: TextInputAction.done,
-                            keyboardType: TextInputType.number,
-                            allowNumber: true,
-                            validator: (val){
-                              if(val.isNotEmpty) {
-                                return null;
-                              }else{
-                                return 'fieldRe'.tr;
-                              }
-                            },
-
-                          ),
-                          0.05.heightBox,
-
-                          homeProvider.loadResult ? const LoadingAnimationWidget().toCenter :CustomButton(
-                            onPressed: () async {
-                              homeProvider.setLoadResult(true);
-                              homeProvider.listen();
-                              await Future.delayed(const Duration(seconds: 3));
-                              homeProvider.setLoadResult(false);
-
-                              double actualPrice = HomeProvider().calculateActualPrice();
-
-                              print('Actual Price: $actualPrice');
-                              homeProvider.listen();
-                              customPushNavigator(context, const ResultScreen());
-                            },
-                            buttonTitle: 'Predict',
-                            enabled: true,
-                            style: Theme.of(context).textTheme.titleMedium!.copyWith(
-                              color: true == false ? ColorConfig().greyBlackColor(1) : ColorConfig().whiteColor(1),
-                              fontSize: SizeConfig.height * 0.022,
-                              fontWeight: FontWeight.w500,
                             ),
-                          ),
-                          0.05.heightBox,
+                            0.021.heightBox,
+                            CustomTextFieldWidget(
+                              title: 'Temperature',
+                              controller: homeProvider.temperatureController,
+                              hintText: 'Temperature',
+                              needsTranslation: false,
+                              allowArabic: true,
+                              textInputAction: TextInputAction.next,
+                              keyboardType: TextInputType.number,
+                              allowNumber: true,
+                              validator: (val){
+                                if(val.isNotEmpty) {
+                                  return null;
+                                }else{
+                                  return 'fieldRe'.tr;
+                                }
+                              },
 
-                        ],
+                            ),
+                            0.021.heightBox,
+
+                            CustomTextFieldWidget(
+                              title: 'Solar power (MW)',
+                              controller: homeProvider.solarPowerController,
+                              hintText: 'Solar power (MW)',
+                              needsTranslation: false,
+                              allowArabic: true,
+                              textInputAction: TextInputAction.next,
+                              keyboardType: TextInputType.number,
+                              allowNumber: true,
+                              validator: (val){
+                                if(val.isNotEmpty) {
+                                  return null;
+                                }else{
+                                  return 'fieldRe'.tr;
+                                }
+                              },
+
+                            ),
+                            0.021.heightBox,
+
+                            CustomTextFieldWidget(
+                              title: 'Biomass (MW)',
+                              controller: homeProvider.biomassController,
+                              hintText: 'Biomass (MW)',
+                              needsTranslation: false,
+                              allowArabic: true,
+                              textInputAction: TextInputAction.next,
+                              keyboardType: TextInputType.number,
+                              allowNumber: true,
+                              validator: (val){
+                                if(val.isNotEmpty) {
+                                  return null;
+                                }else{
+                                  return 'fieldRe'.tr;
+                                }
+                              },
+
+                            ),
+                            0.021.heightBox,
+
+                            CustomTextFieldWidget(
+                              title: 'Fossil oil (MW)',
+                              controller: homeProvider.fossilOilController,
+                              hintText: 'Fossil oil (MW)',
+                              needsTranslation: false,
+                              allowArabic: true,
+                              textInputAction: TextInputAction.next,
+                              keyboardType: TextInputType.number,
+                              allowNumber: true,
+                              validator: (val){
+                                if(val.isNotEmpty) {
+                                  return null;
+                                }else{
+                                  return 'fieldRe'.tr;
+                                }
+                              },
+
+                            ),
+                            0.021.heightBox,
+
+                            CustomTextFieldWidget(
+                              title: 'Fossil gas (MW)',
+                              controller: homeProvider.fossilGasController,
+                              hintText: 'Fossil gas (MW)',
+                              needsTranslation: false,
+                              allowArabic: true,
+                              textInputAction: TextInputAction.next,
+                              keyboardType: TextInputType.number,
+                              allowNumber: true,
+                              validator: (val){
+                                if(val.isNotEmpty) {
+                                  return null;
+                                }else{
+                                  return 'fieldRe'.tr;
+                                }
+                              },
+
+                            ),
+                            0.021.heightBox,
+
+                            CustomTextFieldWidget(
+                              title: 'Brown coal lignite (MW)',
+                              controller: homeProvider.brownCoalLigniteController,
+                              hintText: 'Brown coal lignite (MW)',
+                              needsTranslation: false,
+                              allowArabic: true,
+                              textInputAction: TextInputAction.next,
+                              keyboardType: TextInputType.number,
+                              allowNumber: true,
+                              validator: (val){
+                                if(val.isNotEmpty) {
+                                  return null;
+                                }else{
+                                  return 'fieldRe'.tr;
+                                }
+                              },
+
+                            ),
+                            0.021.heightBox,
+
+                            CustomTextFieldWidget(
+                              title: 'Hard coal (MW)',
+                              controller: homeProvider.hardCoalController,
+                              hintText: 'Hard coal (MW)',
+                              needsTranslation: false,
+                              allowArabic: true,
+                              textInputAction: TextInputAction.next,
+                              keyboardType: TextInputType.number,
+                              allowNumber: true,
+                              validator: (val){
+                                if(val.isNotEmpty) {
+                                  return null;
+                                }else{
+                                  return 'fieldRe'.tr;
+                                }
+                              },
+
+                            ),
+                            0.021.heightBox,
+
+                            CustomTextFieldWidget(
+                              title: 'Hydro run of river poundage(MW)',
+                              controller: homeProvider.hydroRunOfRiverPoundageController,
+                              hintText: 'Hydro run of river poundage(MW)',
+                              needsTranslation: false,
+                              allowArabic: true,
+                              textInputAction: TextInputAction.next,
+                              keyboardType: TextInputType.number,
+                              allowNumber: true,
+                              validator: (val){
+                                if(val.isNotEmpty) {
+                                  return null;
+                                }else{
+                                  return 'fieldRe'.tr;
+                                }
+                              },
+
+                            ),
+                            0.021.heightBox,
+
+                            CustomTextFieldWidget(
+                              title: 'Hydro water reservoir (MW)',
+                              controller: homeProvider.hydroWaterReservoirController,
+                              hintText: 'Hydro water reservoir (MW)',
+                              needsTranslation: false,
+                              allowArabic: true,
+                              textInputAction: TextInputAction.next,
+                              keyboardType: TextInputType.number,
+                              allowNumber: true,
+                              validator: (val){
+                                if(val.isNotEmpty) {
+                                  return null;
+                                }else{
+                                  return 'fieldRe'.tr;
+                                }
+                              },
+
+                            ),
+                            0.021.heightBox,
+
+                            CustomTextFieldWidget(
+                              title: 'Nuclear power (MW)',
+                              controller: homeProvider.nuclearPowerController,
+                              hintText: 'Nuclear power (MW)',
+                              needsTranslation: false,
+                              allowArabic: true,
+                              textInputAction: TextInputAction.next,
+                              keyboardType: TextInputType.number,
+                              allowNumber: true,
+                              validator: (val){
+                                if(val.isNotEmpty) {
+                                  return null;
+                                }else{
+                                  return 'fieldRe'.tr;
+                                }
+                              },
+
+                            ),
+                            0.021.heightBox,
+
+                            CustomTextFieldWidget(
+                              title: 'Waste (MW)',
+                              controller: homeProvider.wasteController,
+                              hintText: 'Waste (MW)',
+                              needsTranslation: false,
+                              allowArabic: true,
+                              textInputAction: TextInputAction.next,
+                              keyboardType: TextInputType.number,
+                              allowNumber: true,
+                              validator: (val){
+                                if(val.isNotEmpty) {
+                                  return null;
+                                }else{
+                                  return 'fieldRe'.tr;
+                                }
+                              },
+
+                            ),
+                            0.021.heightBox,
+
+                            CustomTextFieldWidget(
+                              title: 'Wind onshore (MW)',
+                              controller: homeProvider.windOnshoreController,
+                              hintText: 'Wind onshore (MW)',
+                              needsTranslation: false,
+                              allowArabic: true,
+                              textInputAction: TextInputAction.next,
+                              keyboardType: TextInputType.number,
+                              allowNumber: true,
+                              validator: (val){
+                                if(val.isNotEmpty) {
+                                  return null;
+                                }else{
+                                  return 'fieldRe'.tr;
+                                }
+                              },
+
+                            ),
+                            0.021.heightBox,
+
+                            CustomTextFieldWidget(
+                              title: 'Wind speed',
+                              controller: homeProvider.windSpeedController,
+                              hintText: 'Wind speed',
+                              needsTranslation: false,
+                              allowArabic: true,
+                              textInputAction: TextInputAction.next,
+                              keyboardType: TextInputType.number,
+                              allowNumber: true,
+                              validator: (val){
+                                if(val.isNotEmpty) {
+                                  return null;
+                                }else{
+                                  return 'fieldRe'.tr;
+                                }
+                              },
+
+                            ),
+                            0.021.heightBox,
+
+                            CustomTextFieldWidget(
+                              title: 'Pressure',
+                              controller: homeProvider.pressureController,
+                              hintText: 'Pressure',
+                              needsTranslation: false,
+                              allowArabic: true,
+                              textInputAction: TextInputAction.next,
+                              keyboardType: TextInputType.number,
+                              allowNumber: true,
+                              validator: (val){
+                                if(val.isNotEmpty) {
+                                  return null;
+                                }else{
+                                  return 'fieldRe'.tr;
+                                }
+                              },
+
+                            ),
+                            0.021.heightBox,
+
+
+                            CustomTextFieldWidget(
+                              title: 'Humidity',
+                              controller: homeProvider.humidityController,
+                              hintText: 'Humidity',
+                              needsTranslation: false,
+                              allowArabic: true,
+                              textInputAction: TextInputAction.next,
+                              keyboardType: TextInputType.number,
+                              allowNumber: true,
+                              validator: (val){
+                                if(val.isNotEmpty) {
+                                  return null;
+                                }else{
+                                  return 'fieldRe'.tr;
+                                }
+                              },
+
+                            ),
+                            0.021.heightBox,
+
+                            CustomTextFieldWidget(
+                              title: 'Other renewable (MW)',
+                              controller: homeProvider.otherRenewableController,
+                              hintText: 'Other renewable (MW)',
+                              needsTranslation: false,
+                              allowArabic: true,
+                              textInputAction: TextInputAction.next,
+                              keyboardType: TextInputType.number,
+                              allowNumber: true,
+                              validator: (val){
+                                if(val.isNotEmpty) {
+                                  return null;
+                                }else{
+                                  return 'fieldRe'.tr;
+                                }
+                              },
+
+                            ),
+                            0.021.heightBox,
+
+                            CustomTextFieldWidget(
+                              title: 'Rain_1h',
+                              controller: homeProvider.rain_1hController,
+                              hintText: 'Rain_1h',
+                              needsTranslation: false,
+                              allowArabic: true,
+                              textInputAction: TextInputAction.next,
+                              keyboardType: TextInputType.number,
+                              allowNumber: true,
+                              validator: (val){
+                                if(val.isNotEmpty) {
+                                  return null;
+                                }else{
+                                  return 'fieldRe'.tr;
+                                }
+                              },
+
+                            ),
+                            0.021.heightBox,
+
+
+                            CustomTextFieldWidget(
+                              title: 'hour (0-23)',
+                              controller: homeProvider.hourController,
+                              hintText: 'hour (0-23)',
+                              needsTranslation: false,
+                              allowArabic: true,
+                              textInputAction: TextInputAction.next,
+                              keyboardType: TextInputType.number,
+                              allowNumber: true,
+                              validator: (val){
+                                if(val.isNotEmpty) {
+                                  return null;
+                                }else{
+                                  return 'fieldRe'.tr;
+                                }
+                              },
+
+                            ),
+                            0.021.heightBox,
+
+
+                            CustomTextFieldWidget(
+                              title: 'Day of week\n(Saturday =1 ,...Friday = 7)',
+                              controller: homeProvider.dayOfWeekController,
+                              hintText: 'Day of week',
+                              needsTranslation: false,
+                              allowArabic: true,
+                              textInputAction: TextInputAction.next,
+                              keyboardType: TextInputType.number,
+                              allowNumber: true,
+                              validator: (val){
+                                if(val.isNotEmpty) {
+                                  return null;
+                                }else{
+                                  return 'fieldRe'.tr;
+                                }
+                              },
+
+                            ),
+                            0.021.heightBox,
+
+
+                            CustomTextFieldWidget(
+                              title: 'Day (1-31)',
+                              controller: homeProvider.dayController,
+                              hintText: 'Day (1-31)',
+                              needsTranslation: false,
+                              allowArabic: true,
+                              textInputAction: TextInputAction.next,
+                              keyboardType: TextInputType.number,
+                              allowNumber: true,
+                              validator: (val){
+                                if(val.isNotEmpty) {
+                                  return null;
+                                }else{
+                                  return 'fieldRe'.tr;
+                                }
+                              },
+
+                            ),
+                            0.021.heightBox,
+
+
+                            CustomTextFieldWidget(
+                              title: 'Month (1-12)',
+                              controller: homeProvider.monthController,
+                              hintText: 'Month (1-12)',
+                              needsTranslation: false,
+                              allowArabic: true,
+                              textInputAction: TextInputAction.next,
+                              keyboardType: TextInputType.number,
+                              allowNumber: true,
+                              validator: (val){
+                                if(val.isNotEmpty) {
+                                  return null;
+                                }else{
+                                  return 'fieldRe'.tr;
+                                }
+                              },
+
+                            ),
+                            0.021.heightBox,
+
+                            CustomTextFieldWidget(
+                              title: 'Other (MW)',
+                              controller: homeProvider.otherController,
+                              hintText: 'Other (MW)',
+                              needsTranslation: false,
+                              allowArabic: true,
+                              textInputAction: TextInputAction.done,
+                              keyboardType: TextInputType.number,
+                              allowNumber: true,
+                              validator: (val){
+                                if(val.isNotEmpty) {
+                                  return null;
+                                }else{
+                                  return 'fieldRe'.tr;
+                                }
+                              },
+
+                            ),
+                            0.05.heightBox,
+
+                            homeProvider.loadResult ? const LoadingAnimationWidget().toCenter :CustomButton(
+                              onPressed: () async {
+                                if(homeProvider.formKey.currentState?.validate() ??false){
+                                  homeProvider.setLoadResult(true);
+                                  homeProvider.listen();
+                                  await Future.delayed(const Duration(seconds: 3));
+                                  homeProvider.setLoadResult(false);
+
+                                  double actualPrice = HomeProvider().calculateActualPrice();
+
+                                  print('Actual Price: $actualPrice');
+                                  homeProvider.listen();
+                                  customPushNavigator(context, const ResultScreen());
+                                }else{
+                                  ShowToastFunctions.showToast(context: context, msg: "Please fill all inputs!", toastType: ToastType.error);
+                                }
+
+                              },
+                              buttonTitle: 'Predict',
+                              enabled: true,
+                              style: Theme.of(context).textTheme.titleMedium!.copyWith(
+                                color: true == false ? ColorConfig().greyBlackColor(1) : ColorConfig().whiteColor(1),
+                                fontSize: SizeConfig.height * 0.022,
+                                fontWeight: FontWeight.w500,
+                              ),
+                            ),
+                            0.05.heightBox,
+
+                          ],
+                        ),
                       ),
                     ),
                   ),

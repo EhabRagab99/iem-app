@@ -39,6 +39,8 @@ class HomeProvider extends ChangeNotifier {
       monthController = TextEditingController(),
       dayController = TextEditingController();
 
+  GlobalKey<FormState> formKey = GlobalKey<FormState>();
+
   // Example loss function (Mean Squared Error)
   double lossFunction(double yi, double yHat_i) {
     return pow((yi - yHat_i), 2).toDouble();

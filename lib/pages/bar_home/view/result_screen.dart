@@ -43,7 +43,7 @@ class ResultScreen extends StatelessWidget {
           return GestureDetector(
             onTap: ()=> FocusState().unFocusKeyboardState(context),
             child: Padding(
-                padding: EdgeInsets.symmetric(horizontal: SizeConfig.height * 0.017),
+                padding: EdgeInsets.symmetric(horizontal: SizeConfig.height * 0.012),
                 // padding: const EdgeInsets.symmetric(horizontal: 0),
                 child: RefreshIndicator(
                   onRefresh: () async {
@@ -60,7 +60,7 @@ class ResultScreen extends StatelessWidget {
                           0.05.heightBox,
                           TextDefaultWidget(
                             title: "Price actual: ",
-                            fontSize: SizeConfig.height * 0.04,
+                            fontSize: SizeConfig.height * 0.03,
                             fontWeight: FontWeight.w500,
                           ),
                           0.02.heightBox,
@@ -68,13 +68,13 @@ class ResultScreen extends StatelessWidget {
                             children: [
                               TextDefaultWidget(
                                 title: "$actualPrice",
-                                fontSize: SizeConfig.height * 0.08,
+                                fontSize: SizeConfig.height * 0.06,
                                 fontWeight: FontWeight.w500,
                               ),
                               0.01.widthBox,
                               TextDefaultWidget(
                                 title: "\$/Mw",
-                                fontSize: SizeConfig.height * 0.04,
+                                fontSize: SizeConfig.height * 0.02,
                                 fontWeight: FontWeight.w500,
                               ),
                             ],
