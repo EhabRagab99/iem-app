@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:iem_app/pages/bar_home/model/assignment_model.dart';
 import 'package:iem_app/pages/bar_home/model/fulfill_post_response_model.dart';
 import 'package:iem_app/pages/bar_home/model/shift_model.dart';
@@ -36,10 +38,98 @@ class HomeProvider extends ChangeNotifier {
       dayOfWeekController = TextEditingController(),
       monthController = TextEditingController(),
       dayController = TextEditingController();
-  // int currentWidgetIndex = 0;
-  int compareCounter=0;
 
-  // Position? position;
+  // Example loss function (Mean Squared Error)
+  double lossFunction(double yi, double yHat_i) {
+    return pow((yi - yHat_i), 2).toDouble();
+  }
+
+  // Example regularization function (L2 regularization)
+  double regularizationFunction(double fk) {
+    return pow(fk, 2).toDouble();
+  }
+
+  // Calculate the objective function
+  double calculateActualPrice() {
+    List<double> y = [double.parse(totalActualLoadController.text)];
+    List<double> yHat = [
+      double.parse(biomassController.text),
+      double.parse(fossilOilController.text),
+      double.parse(solarPowerController.text),
+      double.parse(temperatureController.text),
+      double.parse(brownCoalLigniteController.text),
+      double.parse(fossilGasController.text),
+      double.parse(hardCoalController.text),
+      double.parse(hydroRunOfRiverPoundageController.text),
+      double.parse(hydroWaterReservoirController.text),
+      double.parse(nuclearPowerController.text),
+      double.parse(wasteController.text),
+      double.parse(windOnshoreController.text),
+      double.parse(otherRenewableController.text),
+      double.parse(otherController.text),
+      double.parse(pressureController.text),
+      double.parse(humidityController.text),
+      double.parse(windSpeedController.text),
+      double.parse(rain_1hController.text),
+      double.parse(hourController.text),
+      double.parse(dayOfWeekController.text),
+      double.parse(monthController.text),
+      double.parse(dayController.text)
+    ];
+
+    List<double> fk = yHat; // Assuming fk values are the same as yHat for this example
+
+    double lossSum = 0.0;
+    double regularizationSum = 0.0;
+
+    // Calculate the sum of losses
+    for (int i = 0; i < yHat.length; i++) {
+      lossSum += lossFunction(y[0], yHat[i]);
+    }
+
+    // Calculate the sum of regularizations
+    for (int k = 0; k < fk.length; k++) {
+      regularizationSum += regularizationFunction(fk[k]);
+    }
+
+    // Objective function
+    double objective = lossSum + regularizationSum;
+
+    return objective;
+  }
+  // double calculateActualPrice() {
+  //   double totalActualLoad = double.parse(totalActualLoadController.text);
+  //   double biomass = double.parse(biomassController.text);
+  //   double fossilOil = double.parse(fossilOilController.text);
+  //   double solarPower = double.parse(solarPowerController.text);
+  //   double temperature = double.parse(temperatureController.text);
+  //   double brownCoalLignite = double.parse(brownCoalLigniteController.text);
+  //   double fossilGas = double.parse(fossilGasController.text);
+  //   double hardCoal = double.parse(hardCoalController.text);
+  //   double hydroRunOfRiverPoundage = double.parse(hydroRunOfRiverPoundageController.text);
+  //   double hydroWaterReservoir = double.parse(hydroWaterReservoirController.text);
+  //   double nuclearPower = double.parse(nuclearPowerController.text);
+  //   double waste = double.parse(wasteController.text);
+  //   double windOnshore = double.parse(windOnshoreController.text);
+  //   double otherRenewable = double.parse(otherRenewableController.text);
+  //   double other = double.parse(otherController.text);
+  //   double pressure = double.parse(pressureController.text);
+  //   double humidity = double.parse(humidityController.text);
+  //   double windSpeed = double.parse(windSpeedController.text);
+  //   double rain_1h = double.parse(rain_1hController.text);
+  //   double hour = double.parse(hourController.text);
+  //   double dayOfWeek = double.parse(dayOfWeekController.text);
+  //   double month = double.parse(monthController.text);
+  //   double day = double.parse(dayController.text);
+  //
+  //   // Replace the below formula with your actual price calculation formula
+  //   double actualPrice = totalActualLoad + biomass + fossilOil + solarPower + temperature +
+  //       brownCoalLignite + fossilGas + hardCoal + hydroRunOfRiverPoundage + hydroWaterReservoir +
+  //       nuclearPower + waste + windOnshore + otherRenewable + other + pressure + humidity +
+  //       windSpeed + rain_1h + hour + dayOfWeek + month + day;
+  //
+  //   return actualPrice;
+  // }
 
   bool _loadResult = false;
   bool get loadResult => _loadResult;

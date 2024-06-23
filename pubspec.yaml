@@ -50,7 +50,6 @@ flutter:
     - assets/fonts/
     - assets/app_setting_json.json
     - assets/icons/
-    - assets/gif/
     - assets/sounds/
 
   fonts:

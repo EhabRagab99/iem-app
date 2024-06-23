@@ -15,6 +15,9 @@ class ResultScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    double actualPrice = HomeProvider().calculateActualPrice();
+
+    print('Actual Price: $actualPrice');
     return Scaffold(
       // resizeToAvoidBottomInset: false,
       // extendBody: true,
@@ -64,13 +67,13 @@ class ResultScreen extends StatelessWidget {
                           Row(
                             children: [
                               TextDefaultWidget(
-                                title: "300",
+                                title: "$actualPrice",
                                 fontSize: SizeConfig.height * 0.08,
                                 fontWeight: FontWeight.w500,
                               ),
                               0.01.widthBox,
                               TextDefaultWidget(
-                                title: "€/Mw",
+                                title: "\$/Mw",
                                 fontSize: SizeConfig.height * 0.04,
                                 fontWeight: FontWeight.w500,
                               ),

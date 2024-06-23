@@ -541,7 +541,7 @@ class _BarHomeScreenState extends State<BarHomeScreen> {
                             hintText: 'Other (MW)',
                             needsTranslation: false,
                             allowArabic: true,
-                            textInputAction: TextInputAction.next,
+                            textInputAction: TextInputAction.done,
                             keyboardType: TextInputType.number,
                             allowNumber: true,
                             validator: (val){
@@ -559,8 +559,12 @@ class _BarHomeScreenState extends State<BarHomeScreen> {
                             onPressed: () async {
                               homeProvider.setLoadResult(true);
                               homeProvider.listen();
-                              await Future.delayed(const Duration(seconds: 1));
+                              await Future.delayed(const Duration(seconds: 3));
                               homeProvider.setLoadResult(false);
+
+                              double actualPrice = HomeProvider().calculateActualPrice();
+
+                              print('Actual Price: $actualPrice');
                               homeProvider.listen();
                               customPushNavigator(context, const ResultScreen());
                             },
