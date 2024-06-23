@@ -8,7 +8,7 @@ import 'package:iem_app/helpers/popup_helpers/toast_helpers.dart';
 import 'package:iem_app/helpers/routes_handler/material_navigation.dart';
 import 'package:iem_app/main.dart';
 import 'package:iem_app/pages/auth_log_in/view/log_in_screen.dart';
-import 'package:iem_app/service/api_handler/amnco_endpoints.dart';
+import 'package:iem_app/service/api_handler/iem_endpoints.dart';
 import 'package:iem_app/utilites/shared_preferences/shared_preferances.dart';
 import 'package:iem_app/utils/extensions/string_extension.dart';
 import 'package:flutter/cupertino.dart';

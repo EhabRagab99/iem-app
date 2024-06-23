@@ -13,7 +13,7 @@ import 'package:iem_app/provider/loading_provider.dart';
 import 'package:iem_app/provider/localization_provider.dart';
 import 'package:iem_app/provider/multi_providers.dart';
 import 'package:iem_app/provider/public_providers.dart';
-import 'package:iem_app/service/api_handler/amnco_endpoints.dart';
+import 'package:iem_app/service/api_handler/iem_endpoints.dart';
 import 'package:iem_app/utilites/shared_preferences/shared_obj.dart';
 import 'package:iem_app/utilites/shared_preferences/shared_preferances.dart';
 import 'package:flutter/foundation.dart';

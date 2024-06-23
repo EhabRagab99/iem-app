@@ -4,7 +4,7 @@ import 'package:iem_app/helpers/popup_helpers/toast_helpers.dart';
 import 'package:iem_app/helpers/shared_preference.dart';
 import 'package:iem_app/main.dart';
 import 'package:iem_app/pages/splash/model/get_currency_model.dart';
-import 'package:iem_app/service/api_handler/amnco_endpoints.dart';
+import 'package:iem_app/service/api_handler/iem_endpoints.dart';
 import 'package:iem_app/service/api_handler/general_api_state.dart';
 import 'package:iem_app/service/api_handler/http_request_handler.dart';
 import 'package:flutter/foundation.dart';

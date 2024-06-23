@@ -17,7 +17,7 @@ import 'package:iem_app/pages/add_visitor/controller/provider/add_visitor_provid
 import 'package:iem_app/pages/bar_home/model/assignment_model.dart';
 import 'package:iem_app/pages/bar_my_profile/controller/provider/user_provider.dart';
 import 'package:iem_app/provider/loading_provider.dart';
-import 'package:iem_app/service/api_handler/amnco_endpoints.dart';
+import 'package:iem_app/service/api_handler/iem_endpoints.dart';
 import 'package:iem_app/service/api_handler/general_api_state.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';

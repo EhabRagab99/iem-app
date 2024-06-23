@@ -6,7 +6,7 @@ import 'package:iem_app/pages/auth_log_in/controller/provider/login_provider.dar
 import 'package:iem_app/pages/auth_log_in/controller/provider/state_login_click.dart';
 // import 'package:iem_app/pages/auth_sign_up/view/sign_up_screen.dart';
 import 'package:iem_app/provider/loading_provider.dart';
-import 'package:iem_app/service/api_handler/amnco_endpoints.dart';
+import 'package:iem_app/service/api_handler/iem_endpoints.dart';
 import 'package:iem_app/utilites/extenstions/widget_extensions.dart';
 import 'package:iem_app/utils/extensions/app_size_boxes.dart';
 import 'package:iem_app/utils/extensions/string_extension.dart';

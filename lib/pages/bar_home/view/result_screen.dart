@@ -3,7 +3,6 @@ import 'package:iem_app/helpers/app_size_config.dart';
 import 'package:iem_app/helpers/general_states/focus_state.dart';
 import 'package:iem_app/helpers/thems_and_decorations/app_color_config.dart';
 import 'package:iem_app/pages/bar_home/controller/provider/home_provider.dart';
-import 'package:iem_app/pages/bar_my_profile/controller/provider/user_provider.dart';
 import 'package:iem_app/pages/bottom_bar/controller/provider/bottom_bar_provider.dart';
 import 'package:iem_app/provider/loading_provider.dart';
 import 'package:iem_app/utils/extensions/app_size_boxes.dart';
@@ -16,8 +15,6 @@ class ResultScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // resizeToAvoidBottomInset: false,
-      // extendBody: true,
       appBar: AppBar(
         primary: true,
         // elevation: 20,
@@ -41,11 +38,8 @@ class ResultScreen extends StatelessWidget {
             onTap: ()=> FocusState().unFocusKeyboardState(context),
             child: Padding(
                 padding: EdgeInsets.symmetric(horizontal: SizeConfig.height * 0.017),
-                // padding: const EdgeInsets.symmetric(horizontal: 0),
                 child: RefreshIndicator(
                   onRefresh: () async {
-                    // apiGetAssignments.resetPagination();
-                    // return ApiGetAssignments().apiGetWorkforceAssignments(context: context, isFirstTime: true);
                   },
                   child: SingleChildScrollView(
                     keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,

@@ -11,7 +11,7 @@ import 'package:iem_app/pages/bar_my_profile/view/widget/my_profile_header_widge
 import 'package:iem_app/pages/bar_settings/controller/provider/state_on_logout_click.dart';
 import 'package:iem_app/pages/languages/view/languages_screen.dart';
 import 'package:iem_app/provider/loading_provider.dart';
-import 'package:iem_app/service/api_handler/amnco_endpoints.dart';
+import 'package:iem_app/service/api_handler/iem_endpoints.dart';
 import 'package:iem_app/utilites/extenstions/widget_extensions.dart';
 import 'package:iem_app/utils/extensions/app_size_boxes.dart';
 import 'package:iem_app/utils/extensions/string_extension.dart';

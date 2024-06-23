@@ -3,7 +3,7 @@ import 'dart:developer';
 import 'package:iem_app/pages/auth_log_in/controller/provider/login_provider.dart';
 import 'package:iem_app/pages/auth_log_in/model/auth_login_response_model.dart';
 import 'package:iem_app/pages/bar_my_profile/controller/provider/user_provider.dart';
-import 'package:iem_app/service/api_handler/amnco_endpoints.dart';
+import 'package:iem_app/service/api_handler/iem_endpoints.dart';
 import 'package:iem_app/service/api_handler/general_api_state.dart';
 import 'package:iem_app/service/api_handler/http_request_handler.dart';
 import 'package:iem_app/utilites/shared_preferences/shared_preferances.dart';

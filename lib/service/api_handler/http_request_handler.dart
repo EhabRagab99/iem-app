@@ -6,24 +6,19 @@ import 'package:iem_app/helpers/popup_helpers/toast_helpers.dart';
 import 'package:iem_app/helpers/routes_handler/material_navigation.dart';
 import 'package:iem_app/main.dart';
 import 'package:iem_app/pages/auth_log_in/view/log_in_screen.dart';
-import 'package:iem_app/service/api_handler/amnco_endpoints.dart';
+import 'package:iem_app/service/api_handler/iem_endpoints.dart';
 import 'package:iem_app/service/api_handler/api_response.dart';
 import 'package:iem_app/service/api_handler/http_request_exception.dart';
 import 'package:iem_app/utilites/shared_preferences/shared_preferances.dart';
 import 'package:iem_app/utils/extensions/string_extension.dart';
-import 'package:iem_app/widgets/custom_toast/custom_toast_widget.dart';
 import 'package:flutter/foundation.dart';
 import 'package:http/http.dart' as http;
-import 'package:provider/provider.dart';
 
 enum RequestType { get, post, put, delete }
-
 class MultipartRequest extends http.MultipartRequest {
   MultipartRequest(
       super.method,
-      super.url, {
-        required this.onProgress,
-      });
+      super.url, {required this.onProgress,});
   final void Function(int bytes, int totalBytes) onProgress;
 
   @override

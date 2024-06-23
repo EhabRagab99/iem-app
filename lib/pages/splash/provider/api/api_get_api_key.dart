@@ -1,6 +1,6 @@
 import 'package:iem_app/pages/splash/model/api_key_model.dart';
 import 'package:iem_app/pages/splash/provider/helper/decode_api_key.dart';
-import 'package:iem_app/service/api_handler/amnco_endpoints.dart';
+import 'package:iem_app/service/api_handler/iem_endpoints.dart';
 import 'package:iem_app/service/api_handler/general_api_state.dart';
 import 'package:iem_app/service/api_handler/http_request_handler.dart';
 import 'package:flutter/foundation.dart';
